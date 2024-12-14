@@ -5,7 +5,24 @@
     <title>Linux...lol</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/editors.css" />
     <link rel="stylesheet" href="/styles/openword-theme.css" />
+    <script src="/scripts/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        window.onload = () => {
+            const LANGUAGE_SHELL = "ace/mode/sh";
+            const initEditor = (id, language) => {
+                const editor = ace.edit(id);
+                editor.setTheme("ace/theme/monokai");
+                editor.session.setMode(language);
+                editor.renderer.setShowGutter(false);
+                editor.setReadOnly(true);
+                editor.setHighlightActiveLine(false)
+            };
+            const initShellEditor = (id) => initEditor(id, LANGUAGE_SHELL);
+            initShellEditor("how-to-build");
+        };
+    </script>
 </head>
 
 <body>
@@ -22,6 +39,14 @@
     <main>
         <p>
             This is gonna be a site where I track and document my steps and tips around working on the Linux kernel.
+        </p>
+        <h3>How to Build the Linux Kernel</h3>
+        <p>
+
+        <div id="how-to-build"># Generates the build config. One of many options, but this is a good one
+make tinyconfig
+# Builds the kernel using the current config
+make</div>
         </p>
     </main>
 </body>
